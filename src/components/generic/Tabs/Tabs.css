@@ -1,0 +1,67 @@
+/**
+ * Neumorphic Tabs 
+ * @author: Dory Azar
+*/
+
+.tab_control {
+    width: 50rem;
+    height: 4rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--bgLight-2), -0.2rem -0.2rem 0.5rem var(--tint);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-evenly;
+  }
+  .tab_control input {
+    display: none;
+  }
+  .tab_control > input:checked + label {
+    transition: all 0.5s ease;
+    color: var(--primary);
+    font-weight: bold;
+  }
+  .tab_control_1, .tab_control_2, .tab_control_3, .tab_control_4 {
+    width: 8rem;
+    height: 3.6rem;
+    font-size: var(--medium_text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--textDark);
+    transition: all 0.5s ease;
+    margin-left: 2rem;
+  }
+  .tab_control_1:hover, .tab_control_2:hover, .tab_control_3:hover, .tab_control_4:hover{
+    color: var(--primary);
+  }
+  .tab_control_color {
+    position: absolute;
+    height: 3.4rem;
+    width: 11rem;
+    margin-left: 0.3rem;
+    border-radius: 0.8rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--bgLight-2), inset -0.2rem -0.2rem 0.5rem var(--tint);
+    pointer-events: none;
+  }
+  
+  #tab-1:checked ~ .tab_control_color {
+    transform: translateX(-17rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  
+  #tab-2:checked ~ .tab_control_color {
+    transform: translateX(-5rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  #tab-3:checked ~ .tab_control_color {
+    transform: translateX(7rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  #tab-4:checked ~ .tab_control_color {
+    transform: translateX(19rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }

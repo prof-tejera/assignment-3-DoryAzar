@@ -1,0 +1,113 @@
+/**
+ * Neumorphic Button 
+ * @author: Dory Azar
+*/
+
+.btn_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.icon_btn {
+    width: 4rem;
+    height: 4rem;
+    margin: 2rem;
+    border-radius: 50%;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--bgLight-2), -0.2rem -0.2rem 0.5rem var(--tint);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--medium_text);
+    cursor: pointer;
+    color: var(--textDark);
+    transition: all 0.5s ease;
+}
+
+.icon_btn.secondary {
+    margin-top: -3.75rem;
+    margin-right: -5.75rem;
+    margin-top: -10%;
+    margin-right: -20%;
+}
+
+.icon_btn.primary {
+    width: 6rem;
+    height: 6rem;
+    font-size: var(--large_text);
+}
+.icon_btn:active {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--bgLight-2), inset -0.2rem -0.2rem 0.5rem var(--tint);
+    color: var(--primary);
+}
+.icon_btn:hover, .icon_btn_stopwatch:hover {
+    color: var(--primary);
+}
+
+.icon_btn_countdown:hover {
+    color: var(--primary-theme-2);
+}
+
+.icon_btn_xy:hover {
+    color: var(--primary-theme-3);
+}
+
+.icon_btn_tabata:hover {
+    color: var(--primary-theme-4);
+}
+
+.icon_btn.selected {
+    color: var(--primary);
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--bgLight-2), inset -0.2rem -0.2rem 0.5rem var(--tint);
+}
+
+.icon_btn.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: opacity(0.5);
+}
+
+
+/*  BUTTONS  */
+.btn {
+    width: 15rem;
+    height: 4rem;
+    border-radius: 1rem;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--bgLight-2), -0.2rem -0.2rem 0.5rem var(--tint);
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: var(--medium_text);
+  }
+.btn_primary {
+    color: var(--textDark);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--bgLight-2), -0.2rem -0.2rem 0.5rem var(--tint);
+}
+.btn_primary:hover {
+    color: var(--primary);
+}
+
+.btn_primary_stopwatch:hover {
+    color: var(--primary);
+}
+
+.btn_primary_countdown:hover {
+    color: var(--primary-theme-2);
+}
+
+.btn_primary_xy:hover {
+    color: var(--primary-theme-3);
+}
+
+.btn_primary_tabata:hover {
+    color: var(--primary-theme-4);
+}
+
+.btn_primary:active {
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--bgLight-2), inset -0.2rem -0.2rem 0.5rem var(--tint);
+    color: var(--primary);
+}
