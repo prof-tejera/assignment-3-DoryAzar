@@ -3,8 +3,8 @@ import className from 'classnames';
 import PropTypes from 'prop-types';
 import { T_STOPWATCH } from '../../../utils/helpers';
 
-const Button =  ({ buttonTheme, ...props }) => {
-    const selectedTimer = buttonTheme ? buttonTheme : T_STOPWATCH.toLowerCase(); 
+const Button =  ({ buttonTheme  = T_STOPWATCH, ...props }) => {
+
     const { 
         id,
         value = "",
@@ -18,9 +18,9 @@ const Button =  ({ buttonTheme, ...props }) => {
 
     const buttonStyle = [{
         "icon_btn": isIconButton,
-        [`icon_btn_${selectedTimer.toLowerCase()}`]: true,
+        [`icon_btn_${buttonTheme.toLowerCase()}`]: true,
         "btn": !isIconButton,
-        [`btn_primary_${selectedTimer.toLowerCase()}`]: true
+        [`btn_primary_${buttonTheme.toLowerCase()}`]: true
     }];
 
     const iconVisibility = [{
