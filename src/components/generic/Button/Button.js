@@ -1,11 +1,10 @@
-import  { useContext } from 'react';
-import {  TimerContext } from '../../../platform/TimerProvider';
 import './Button.css';
 import className from 'classnames';
 import PropTypes from 'prop-types';
+import { T_STOPWATCH } from '../../../utils/helpers';
 
-const Button =  ({...props}) => {
-    const { selectedTimer } = useContext(TimerContext);
+const Button =  ({ buttonTheme, ...props }) => {
+    const selectedTimer = buttonTheme ? buttonTheme : T_STOPWATCH.toLowerCase(); 
     const { 
         id,
         value = "",
@@ -49,7 +48,8 @@ Button.propTypes = {
     iconName: PropTypes.string,
     classifiers: PropTypes.string,
     iconVisible: PropTypes.bool,
-	onClick: PropTypes.func.isRequired
+	onClick: PropTypes.func.isRequired,
+    buttonTheme: PropTypes.string
 }
 
 export default Button;

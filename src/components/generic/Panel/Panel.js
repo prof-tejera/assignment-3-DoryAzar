@@ -1,7 +1,7 @@
 import './Panel.css';
 import PropTypes from 'prop-types';
 
-const Panel =  ({...props}) => {
+const Panel =  (props) => {
   const { id = "", children }  = props;
 
   return (

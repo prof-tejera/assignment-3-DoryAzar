@@ -49,7 +49,7 @@ const Timer = () => {
         <Display  />
 
         <div className="btn_bar">
-            {timerCounting &&
+            {timerCounting ? (
                   <Button 
                       id = "pause_btn"
                       value="pause"
@@ -57,10 +57,10 @@ const Timer = () => {
                       isIconButton={true} 
                       onClick={toggleCounting} 
                       iconName="pause"
+                      buttonTheme={selectedTimer}
                   />
-            }
+            ) : (
 
-            {!timerCounting &&
                   <Button 
                       id = "start_btn"
                       value="start"
@@ -68,11 +68,12 @@ const Timer = () => {
                       isIconButton={true} 
                       onClick={toggleCounting} 
                       iconName="play"
+                      buttonTheme={selectedTimer}
                   />
             
-            }
+            )}
 
-            {timerCounting && 
+            {timerCounting ? (
               <Button 
               id = "complete"
               value="complete"
@@ -80,10 +81,11 @@ const Timer = () => {
               isIconButton = {true}
               onClick={completeTimer}
               iconName="play-forward-outline"
+              buttonTheme={selectedTimer}
             />
             
-            }
-            {!timerCounting &&
+            )
+            :  (
               <Button 
                 id = "reset_btn"
                 value="reset"
@@ -91,8 +93,9 @@ const Timer = () => {
                 isIconButton = {true}
                 onClick={resetTimer}
                 iconName="refresh-outline"
+                buttonTheme={selectedTimer}
               />
-            }
+            )}
           
             {settings && <Button 
               id = "settings_btn"
@@ -101,6 +104,7 @@ const Timer = () => {
               isIconButton = {true}
               onClick={flipSide}
               iconName="settings"
+              buttonTheme={selectedTimer}
             />}
         </div>
       </Card>
@@ -127,8 +131,11 @@ const Timer = () => {
                   isIconButton = {true}
                   onClick={flipSide}
                   iconName="arrow-back-outline"
+                  buttonTheme={selectedTimer}
               />
-              <Button onClick={saveSettings}>
+              <Button 
+              onClick={saveSettings}
+              buttonTheme={selectedTimer}>
                 Save
               </Button>
             </div>

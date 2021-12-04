@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './Input.css';
 import PropTypes from 'prop-types';
 
-const Input = ({...props}) => {
+const Input = (props) => {
 
     const { label, placeholder, ...inputAttributes } = props;
     const [value, setValue] = useState(props.value);

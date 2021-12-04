@@ -2,7 +2,7 @@ import './Card.css';
 import className from 'classnames';
 import PropTypes from 'prop-types';
 
-const Card =  ({...props}) => {
+const Card =  (props) => {
     const { side ="front", children } = props;
 
     const cardStyle = [{
