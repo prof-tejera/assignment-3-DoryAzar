@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import { memo } from 'react';
 import './Card.css';
 import className from 'classnames';
 import PropTypes from 'prop-types';
