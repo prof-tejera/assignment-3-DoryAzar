@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import Stopwatch from "../components/timers/Stopwatch";
 import Countdown from "../components/timers/Countdown";
 import XY from "../components/timers/XY";
@@ -7,20 +7,13 @@ import { T_STOPWATCH, T_COUNTDOWN, T_XY, T_TABATA } from '../utils/helpers';
 
 export const WorkoutSettingsContext = React.createContext({});
 
-const WORKOUT_SETTINGS = [
-    {"startTime": 0,"stopTime": 2},
-    {"startTime": 0,"stopTime": 3},
-    {"startTime": 10,"stopTime": 0},
-    {"startTime": 10,"totalRounds": 2},
-    {"startTime": 10,"restStartTime": 5,"totalRounds": 5}
-]
 
 const WORKOUTS = [
-    { type: T_STOPWATCH, C: <Stopwatch  key={0} settings={WORKOUT_SETTINGS[0]} /> },
-    { type: T_STOPWATCH, C: <Stopwatch  key={1} settings={WORKOUT_SETTINGS[1]} /> },
-    { type: T_COUNTDOWN, C: <Countdown  key={2} settings={WORKOUT_SETTINGS[2]} /> },
-    { type: T_XY, C: <XY key={3} settings={WORKOUT_SETTINGS[3]}/> },
-    { type: T_TABATA, C: <Tabata key={4} settings={WORKOUT_SETTINGS[4]}/> }
+    { id: 0, type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 2}, C: <Stopwatch  key={0} settings={{"startTime": 0,"stopTime": 2}} /> },
+    { id: 1, type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 3} , C: <Stopwatch  key={1} settings={{"startTime": 0,"stopTime": 3}} /> },
+    { id: 2, type: T_COUNTDOWN, settings: {"startTime": 10,"stopTime": 0},  C: <Countdown  key={2} settings={{"startTime": 10,"stopTime": 0}} /> },
+    { id: 3, type: T_XY, settings: {"startTime": 10,"totalRounds": 2}, C: <XY key={3} settings={{"startTime": 10,"totalRounds": 2}}/> },
+    { id: 4, type: T_TABATA, settings: {"startTime": 10,"restStartTime": 5,"totalRounds": 5}, C: <Tabata key={4} settings={{"startTime": 10,"restStartTime": 5,"totalRounds": 5}}/> }
   ];
 
 export const WorkoutSettingsProvider = ({ children }) => {
@@ -28,13 +21,58 @@ export const WorkoutSettingsProvider = ({ children }) => {
     const [ workouts, setWorkouts ] = useState(WORKOUTS);
     const [ currentWorkout, setCurrentWorkout ]  = useState(0);
 
+
+    // CRUD: Create workout
+    const createWorkout  = (type, settings) => {
+        const id = workouts.length;
+        setWorkouts([...workouts, {
+            id, 
+            type, 
+            "C": componentizeWorkout(type, settings)
+        }]);
+    }
+
+    // CRUD: Retrieve workout
+    const retrieveWorkout = ({ id }) => workouts.find(workout => `${workout.id}` === `${id}`);
+
+    // CRUD: Update workout
+    const updateWorkout =  workout => {
+        const C = componentizeWorkout(workout.id, workout.type, workout.settings);
+        const updatedWorkout =  {...workout, "C": C};
+        const updatedWorkouts = workouts.map(w => (w.id === workout.id ? updatedWorkout : w));
+        setWorkouts(updatedWorkouts);
+    }
+
+    // CRUD: Delete workout
+    const deleteWorkout = ({ id }) => {
+        const updatedWorkouts = workouts.filter(w => w.id !== id);
+        setWorkouts(updatedWorkouts);
+      }
+
+    // Componentize the workout
+    const componentizeWorkout =  (id, type, settings) => {
+        switch(type) {
+            case T_COUNTDOWN:
+                return <Countdown settings={settings} key={id} />
+            case T_XY:
+                return <XY settings={settings} key={id} />
+            case T_TABATA:
+                return <Tabata settings={settings} key={id} />
+            default:
+                return <Stopwatch settings={settings} key={id} />
+        } 
+    }
+
+    // Check if workout is empty
+    const isEmpty = () => workouts.length ===  0;
+
     // Checks if current workout is  within workouts
-    const inWorkout = useCallback(() => currentWorkout < workouts.length,  [currentWorkout, workouts]);
+    const hasNext = () => currentWorkout < workouts.length;
 
 
     // Get the next workout
     const nextWorkout = () => {
-        if (inWorkout())
+        if (hasNext())
             setCurrentWorkout(currentWorkout + 1);
     }
 
@@ -46,20 +84,21 @@ export const WorkoutSettingsProvider = ({ children }) => {
     const calculateTotalWorkout = () => {
 
         // Compute total workout
-            const totalWorkout = (total, settings) => {
-            let { startTime = 0, stopTime = 0, totalRounds = 1, restStartTime = 0} = settings;
+        const totalWorkout = (total, workout) => {
+            let { startTime = 0, stopTime = 0, totalRounds = 1, restStartTime = 0} = workout.settings;
             let duration = Math.abs((startTime - stopTime) + restStartTime) * totalRounds; 
             return total + duration;
         }
 
-        return WORKOUT_SETTINGS.reduce(totalWorkout, 0);
+        return !isEmpty() ? WORKOUTS.reduce(totalWorkout, 0) : 0;
     }
 
     return <WorkoutSettingsContext.Provider 
             value={{ 
-                workouts, setWorkouts,
-                currentWorkout, setCurrentWorkout, nextWorkout, inWorkout,
-                resetWorkout, calculateTotalWorkout
+                workouts, setWorkouts, hasNext, isEmpty,
+                currentWorkout, setCurrentWorkout, nextWorkout, 
+                resetWorkout, calculateTotalWorkout,
+                createWorkout, retrieveWorkout, updateWorkout, deleteWorkout, componentizeWorkout
             }}>
             {children}
         </WorkoutSettingsContext.Provider>;

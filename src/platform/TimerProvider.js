@@ -14,7 +14,7 @@ export const TimerProvider = ({ children }) => {
         startTime,
         stopTime,
         restStartTime,
-        totalRounds, setSettings, inWorkout
+        totalRounds, setSettings, hasNext
      } = settingsContext;
 
     const [statusMessage, setStatusMessage] = useState("");
@@ -121,7 +121,7 @@ export const TimerProvider = ({ children }) => {
     const completeTimer = (interval) => {
         clearInterval(interval);
         clearTimeout(interval);
-        if (!inWorkout())
+        if (!hasNext())
             toggleCounting();
         setCounter(stopTime);
         setCurrentRound(totalRounds);

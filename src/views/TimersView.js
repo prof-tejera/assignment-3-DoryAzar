@@ -1,16 +1,17 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect} from 'react';
 import { TimerContext } from '../platform/TimerProvider';
 import Panel from "../components/generic/Panel/Panel";
 
 const TimersView = () => {
 
-  const { workouts, selectedTimer, setSelectedTimer, currentWorkout, inWorkout, calculateTotalWorkout } = useContext(TimerContext);
+  const { workouts, selectedTimer, setSelectedTimer, currentWorkout, hasNext, isEmpty, calculateTotalWorkout } = useContext(TimerContext);
 
   useEffect(() => {
-    if (inWorkout())
+    if (hasNext())
         setSelectedTimer(workouts[currentWorkout].type);
-  }, [currentWorkout, workouts, inWorkout, setSelectedTimer]);  
+  }, [currentWorkout, workouts, hasNext, setSelectedTimer]);  
 
+ 
   return (
     <>
       <div>
@@ -18,7 +19,9 @@ const TimersView = () => {
         {selectedTimer}
       </div>
       <Panel id="timer_panel">
-        {inWorkout()? (workouts[currentWorkout].C) : (workouts[currentWorkout-1].C) }
+        {isEmpty()? (<div>Let's start your workout</div>) : (
+         hasNext()? (workouts[currentWorkout].C) : (workouts[currentWorkout-1].C)
+        )}
       </Panel>
     </>
 

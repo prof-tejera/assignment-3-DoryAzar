@@ -12,11 +12,12 @@ export const SettingsProvider = ({ children }) => {
     const { ...workoutContext } = useContext(WorkoutSettingsContext);
     const { workouts } =  workoutContext; 
 
-    const [selectedTimer, setSelectedTimer]  = useState(workouts[0].type);
+    const [selectedTimer, setSelectedTimer]  = useState(workouts[0]?.type);
     const [startTime, setStartTime] = useState(0);
     const [stopTime, setStopTime] = useState(0);
     const [totalRounds, setTotalRounds] = useState(0);
     const [restStartTime, setRestStartTime] = useState(0);
+
 
 
     // Getter that wraps all the settings in one object

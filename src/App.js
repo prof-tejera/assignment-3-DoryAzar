@@ -18,7 +18,7 @@ const App = () => {
             <nav className="navigation">
                 <ul>
                   <li key={1}>
-                    <Link to="/">Timers</Link>
+                    <Link to="/">Workouts</Link>
                   </li>
                   <li key={2}>
                     <Link to="/docs">Documentation</Link>
