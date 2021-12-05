@@ -4,7 +4,7 @@ import Panel from "../components/generic/Panel/Panel";
 
 const TimersView = () => {
 
-  const { workouts, selectedTimer, setSelectedTimer, currentWorkout, inWorkout } = useContext(TimerContext);
+  const { workouts, selectedTimer, setSelectedTimer, currentWorkout, inWorkout, calculateTotalWorkout } = useContext(TimerContext);
 
   useEffect(() => {
     if (inWorkout())
@@ -14,6 +14,7 @@ const TimersView = () => {
   return (
     <>
       <div>
+        <div>`Total Workout Duration: {calculateTotalWorkout()} seconds`</div>
         {selectedTimer}
       </div>
       <Panel id="timer_panel">
