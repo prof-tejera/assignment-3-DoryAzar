@@ -48,6 +48,8 @@ export const SettingsProvider = ({ children }) => {
         setStopTime(settings.stopTime && isValid(settings.stopTime)? parseInt(settings.stopTime): 0);
         setTotalRounds(settings.totalRounds && isValid(settings.totalRounds, "rounds")? parseInt(settings.totalRounds):  1);
         setRestStartTime(settings.restStartTime && isValid(settings.restStartTime) ? parseInt(settings.restStartTime): 0);
+
+
     }, [selectedTimer])
 
 

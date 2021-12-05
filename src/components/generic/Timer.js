@@ -13,7 +13,8 @@ const CONFIG = TIMER_SETTINGS.configurations;
 const Timer = () => {
 
   const { ...context } = useContext(TimerContext);
-  const { timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings, resetWorkout } = context;
+  const { timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings, 
+    resetWorkout, workouts, getWorkout, updateWorkout, currentWorkout } = context;
   const settings = TIMER_SETTINGS.schema[selectedTimer];
 
   // play button style
@@ -40,6 +41,14 @@ const Timer = () => {
     });
     // save the settings to the context
     setSettings(inputSettings);
+
+    // save settings in workouts
+    const workout = getWorkout(currentWorkout);
+    if (workout) {
+        workout.settings = inputSettings;
+        updateWorkout(workout);
+        console.log(workouts);
+    }
     flipSide();
   }
 
