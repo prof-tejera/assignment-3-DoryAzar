@@ -14,7 +14,7 @@ const Timer = () => {
 
   const { ...context } = useContext(TimerContext);
   const { timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings, 
-    resetWorkout, workouts, getWorkout, updateWorkout, currentWorkout } = context;
+    resetWorkout, workouts, getWorkout, updateWorkout, currentWorkout, currentWorkoutId, deleteWorkout } = context;
   const settings = TIMER_SETTINGS.schema[selectedTimer];
 
   // play button style
@@ -52,8 +52,11 @@ const Timer = () => {
     flipSide();
   }
 
-  const handleReset = () => {
-    resetWorkout();
+
+  const handleDelete  =  () =>  {
+    const id = currentWorkoutId();
+    deleteWorkout({"id": id});
+    flipSide();
   }
 
   return (
@@ -104,7 +107,7 @@ const Timer = () => {
                 value="reset"
                 classifiers = "primary"
                 isIconButton = {true}
-                onClick={handleReset}
+                onClick={resetWorkout}
                 iconName="refresh-outline"
                 buttonTheme={selectedTimer}
               />
@@ -151,6 +154,14 @@ const Timer = () => {
               buttonTheme={selectedTimer}>
                 Save
               </Button>
+              <Button 
+                  id = "delete_btn"
+                  value="delete"
+                  isIconButton = {true}
+                  onClick={handleDelete}
+                  iconName="trash-outline"
+                  buttonTheme={selectedTimer}
+              />
             </div>
       </Card>
     </>

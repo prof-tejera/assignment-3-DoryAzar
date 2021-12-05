@@ -60,7 +60,7 @@ export const WorkoutSettingsProvider = ({ children }) => {
     // Get Workout Property
     const getWorkoutProperty = (index, property) => !isEmpty()? workouts[index][property] : null;
     
-
+    const currentWorkoutId = () => getWorkoutProperty(currentWorkout, 'id');
 
     // Componentize the workout
     const componentizeWorkout =  (id, type, settings) => {
@@ -112,7 +112,7 @@ export const WorkoutSettingsProvider = ({ children }) => {
                 currentWorkout, setCurrentWorkout, nextWorkout, 
                 resetWorkout, calculateTotalWorkout,
                 createWorkout, retrieveWorkout, updateWorkout, deleteWorkout, 
-                componentizeWorkout, getWorkout, getWorkoutPosition, getWorkoutProperty
+                componentizeWorkout, getWorkout, getWorkoutPosition, getWorkoutProperty, currentWorkoutId
             }}>
             {children}
         </WorkoutSettingsContext.Provider>;
