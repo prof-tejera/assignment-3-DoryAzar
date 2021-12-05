@@ -44,3 +44,9 @@
     color: var(--textDark);
     margin-top: 1rem;
 }
+
+
+img{
+    max-height: 20rem;
+    width: auto;
+}

@@ -1,8 +1,41 @@
-# Objective for Assignment 3
+# Assignment 3
+
+## Submission 
+
+[Visit Neumorphic Timers](https://prof-tejera.github.io/assignment-3-DoryAzar/)
+
+## What has been implemented
+
++ Workout Home that executes all the configured sets
++ The total workout duration
++ The total number of sets configured in a workout
++ Ability to add and remove a workout set
++ Ability to update the settings of a workout set
++ Ability to start/pause workout
++ Ability to skip (fast-forward) a workout set
++ Ability to restart the whole workout
+
+## Credits
+
++ Illustration in empty states are created by Iconscout and published on for public use [Pinterest](https://www.pinterest.com/pin/732960908102202953/)
+
+##  Inspiration
+
+We decided for this design to revisit a novel and modern approach to Skeumorphism. This new trend - called Neumorphism - started in 2020 and aims to add more depth and more layering to the contemporary flat design.
+
+
+Here are some of the references that inspired this work:
++ [Neumorphism and CSS](https://css-tricks.com/neumorphism-and-css/)
++ [Neumorphism in CSS with just two variables](https://dev.to/aritik/neumorphism-in-css-with-just-two-variables-2p30)
++ [Neumorphism Tool](https://neumorphism.io)
++ [Neumorphism in user interfaces](https://uxdesign.cc/neumorphism-in-user-interfaces-b47cef3bf3a6)
++ [Neumorphism: why it's all the hype in UI design](https://www.justinmind.com/blog/neumorphism-ui/)
++ [Neumorphism the right way -  A 2020 Design Trend](https://artofofiare.medium.com/neumorphism-the-right-way-a-2020-design-trend-386e6a09040a)
+
+## Objective for Assignment 3
 
 This is the 3rd and last assignment (A3) for E-39 Design Principles in React. Using our timers from Assignment 2 (A2), we will build a workout app that allows our users to assemble **multiple timers** into a workout queue. This workout queue will be executed in the order that the timers were added. Let's take a look at an example:
 
-![Workout example 1](images/example_workout.png)
 
 ## Structural Changes to Context
 
@@ -32,6 +65,7 @@ Currently we have two routes `/` and `/docs`. We are going to be modifying our `
 - When user clicks "Add" from **Home** screen, they are routed to this page, where they can choose the type of timer and configure all inputs for each timer. After configuring, the user confirms and the timer is added to the list.
 - The `/add` page should allow the user to configure any of the four timers (stopwatch, countdown, XY, and tabata)
 - The user should be able to go back to the home page from here
+
 ## Installing and Running the project
 
 As you have noticed this repository is empty. To begin this assignment you must copy over all of our files from A2 into this repo. **Do not copy over the `.git` directory and the `.gitignore` file.**. 

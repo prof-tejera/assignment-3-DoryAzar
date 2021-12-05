@@ -11,9 +11,9 @@ export const WorkoutSettingsContext = React.createContext({});
 const WORKOUTS = [
     { id: 0, title: "workout 1", type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 2}, C: <Stopwatch  key={0} settings={{"startTime": 0,"stopTime": 2}} /> },
     { id: 1, title: "workout 2", type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 3} , C: <Stopwatch  key={1} settings={{"startTime": 0,"stopTime": 3}} /> },
-    { id: 2, title: "workout 3", type: T_COUNTDOWN, settings: {"startTime": 10,"stopTime": 0},  C: <Countdown  key={2} settings={{"startTime": 10,"stopTime": 0}} /> },
-    { id: 3, title: "workout 4", type: T_XY, settings: {"startTime": 10,"totalRounds": 2}, C: <XY key={3} settings={{"startTime": 10,"totalRounds": 2}}/> },
-    { id: 4, title: "workout 5", type: T_TABATA, settings: {"startTime": 10,"restStartTime": 5,"totalRounds": 5}, C: <Tabata key={4} settings={{"startTime": 10,"restStartTime": 5,"totalRounds": 5}}/> }
+    // { id: 2, title: "workout 3", type: T_COUNTDOWN, settings: {"startTime": 10,"stopTime": 0},  C: <Countdown  key={2} settings={{"startTime": 10,"stopTime": 0}} /> },
+    // { id: 3, title: "workout 4", type: T_XY, settings: {"startTime": 10,"totalRounds": 2}, C: <XY key={3} settings={{"startTime": 10,"totalRounds": 2}}/> },
+    // { id: 4, title: "workout 5", type: T_TABATA, settings: {"startTime": 10,"restStartTime": 5,"totalRounds": 5}, C: <Tabata key={4} settings={{"startTime": 10,"restStartTime": 5,"totalRounds": 5}}/> }
   ];
 
 export const WorkoutSettingsProvider = ({ children }) => {

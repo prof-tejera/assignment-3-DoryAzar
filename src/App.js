@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Container from "./components/generic/Container/Container";
 import DocumentationView from "./views/DocumentationView";
 import TimersView from "./views/TimersView";
+import AddView from "./views/AddView";
 
 
 const App = () => {
@@ -30,6 +31,9 @@ const App = () => {
                 <Switch>
                     <Route path="/docs">
                       <DocumentationView />
+                    </Route>
+                    <Route path="/add">
+                      <AddView />
                     </Route>
                     <Route path="/">
                       <TimersView />
