@@ -1,7 +1,7 @@
 import { useContext, useEffect} from 'react';
 import { TimerContext } from '../platform/TimerProvider';
 import Panel from "../components/generic/Panel/Panel";
-import Button from "../components/generic/Button/Button";
+import { Link } from "react-router-dom";
 
 const TimersView = () => {
 
@@ -12,8 +12,6 @@ const TimersView = () => {
         setSelectedTimer(workouts[currentWorkout].type);
   }, [currentWorkout, workouts, hasNext, setSelectedTimer]); 
 
- 
-  const redirect = () => window.location.href = ("/add");
 
   return (
     <>
@@ -26,11 +24,7 @@ const TimersView = () => {
         {isEmpty()? (
           <>
             <img src={process.env.PUBLIC_URL + '/fitness.png'} alt="No Workouts found"/>
-            <Button 
-              onClick={redirect}
-              buttonTheme={selectedTimer}>
-                Add a workout
-              </Button>
+            <Link className="route-link" to="/add">Add a workout set</Link>
           </>
         ) : (
          hasNext()? (workouts[currentWorkout].C) : (workouts[currentWorkout-1].C)

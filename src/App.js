@@ -24,9 +24,6 @@ const App = () => {
                   <li key={2}>
                     <Link to="/docs">Documentation</Link>
                   </li>
-                  <li key={3}>
-                    <Link to="/add">Add</Link>
-                  </li>
                 </ul>
               </nav>
               <br />
