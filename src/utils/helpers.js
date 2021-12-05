@@ -15,7 +15,7 @@ export const readCollection = (arr, keyName) => {
 // Fetch timer info from collection of timers
 export const getTimer = (timerName, arr) =>  {
     function isTimer(timer) {
-        return timer.title === timerName;
+        return timer.type === timerName;
     }
     return arr.find((isTimer)).C;
 }

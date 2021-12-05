@@ -1,6 +1,7 @@
 import React from "react";
 import TimerProvider from './platform/TimerProvider';
 import SettingsProvider from "./platform/SettingsProvider";
+import WorkoutSettingsProvider from "./platform/WorkoutSettingsProvider";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Container from "./components/generic/Container/Container";
 import DocumentationView from "./views/DocumentationView";
@@ -11,6 +12,7 @@ const App = () => {
 
   return (
       <Router>
+        <WorkoutSettingsProvider>
         <SettingsProvider>
             <TimerProvider>
             <nav className="navigation">
@@ -36,6 +38,7 @@ const App = () => {
               </Container>
               </TimerProvider>
           </SettingsProvider>
+        </WorkoutSettingsProvider>
       </Router>
   );
 }

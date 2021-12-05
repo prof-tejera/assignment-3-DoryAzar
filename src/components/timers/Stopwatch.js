@@ -1,7 +1,8 @@
 import Timer from "../generic/Timer";
 import { useTimer } from "../../hooks/useTimer";
+import PropTypes from 'prop-types';
 
-const StopWatch = ()  =>  {
+const StopWatch = (settings)  =>  {
 
   /* 
    * Object for each type of timer for potential 
@@ -9,11 +10,15 @@ const StopWatch = ()  =>  {
   */
 
   // Hook for the timer
-  useTimer();
+  useTimer(settings);
 
   // Render the generic timer
   return <Timer />
 
+}
+
+StopWatch.propTypes = {
+  settings: PropTypes.object,
 }
 
 export default StopWatch;

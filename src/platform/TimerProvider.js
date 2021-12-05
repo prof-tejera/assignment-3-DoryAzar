@@ -8,12 +8,14 @@ export const TimerProvider = ({ children }) => {
 
     // Fetch content from Settings Provider
     const { ...settingsContext } = useContext(SettingsContext);
+
     const { 
         selectedTimer,
         startTime,
         stopTime,
         restStartTime,
-        totalRounds, setSettings } = settingsContext;
+        totalRounds, setSettings, inWorkout
+     } = settingsContext;
 
     const [statusMessage, setStatusMessage] = useState("");
     const [timerCounting, setTimerCounting] =  useState(false);
@@ -75,6 +77,7 @@ export const TimerProvider = ({ children }) => {
     // Pause the timer
     const pauseTimer = (interval) => {
         clearInterval(interval);
+        clearTimeout(interval);
     }
 
     // Reset the timer: keeps the timer runner
@@ -109,7 +112,7 @@ export const TimerProvider = ({ children }) => {
 
     // Resets all the timer controls upon  exit
     const exitTimer = useCallback(() => {
-        setTimerCounting(false);
+        // setTimerCounting(false);
         setToComplete(false);
         setCurrentRound(1);
     }, []);
@@ -117,7 +120,9 @@ export const TimerProvider = ({ children }) => {
     // End the timer
     const completeTimer = (interval) => {
         clearInterval(interval);
-        toggleCounting();
+        clearTimeout(interval);
+        if (!inWorkout())
+            toggleCounting();
         setCounter(stopTime);
         setCurrentRound(totalRounds);
         setRestRound(totalRounds);

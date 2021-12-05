@@ -13,7 +13,7 @@ const CONFIG = TIMER_SETTINGS.configurations;
 const Timer = () => {
 
   const { ...context } = useContext(TimerContext);
-  const { resetTimer, timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings } = context;
+  const { timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings, resetWorkout } = context;
   const settings = TIMER_SETTINGS.schema[selectedTimer];
 
   // play button style
@@ -41,6 +41,10 @@ const Timer = () => {
     // save the settings to the context
     setSettings(inputSettings);
     flipSide();
+  }
+
+  const handleReset = () => {
+    resetWorkout();
   }
 
   return (
@@ -91,7 +95,7 @@ const Timer = () => {
                 value="reset"
                 classifiers = "primary"
                 isIconButton = {true}
-                onClick={resetTimer}
+                onClick={handleReset}
                 iconName="refresh-outline"
                 buttonTheme={selectedTimer}
               />

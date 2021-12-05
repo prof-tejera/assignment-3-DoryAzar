@@ -1,7 +1,8 @@
-import Timer from '../../components/generic/Timer';
+import Timer from "../generic/Timer";
 import { useTimer } from "../../hooks/useTimer";
+import PropTypes from 'prop-types';
 
-const Countdown = () => {
+const Countdown = (settings) => {
 
   /* 
    * Object for each type of timer for potential 
@@ -9,11 +10,15 @@ const Countdown = () => {
   */
 
   // Hook for the timer
-  useTimer();
+  useTimer(settings);
 
   // Render the generic timer
   return <Timer />
   
+}
+
+Countdown.propTypes = {
+  settings: PropTypes.object,
 }
 
 export default Countdown;

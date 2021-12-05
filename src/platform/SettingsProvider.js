@@ -1,12 +1,18 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback,  useContext } from 'react';
 import { TIMER_SETTINGS, T_STOPWATCH, T_COUNTDOWN, saveToStorage } from '../utils/helpers';
+import { WorkoutSettingsContext } from './WorkoutSettingsProvider';
+
 
 export const SettingsContext = React.createContext({});
 
 
 export const SettingsProvider = ({ children }) => {
 
-    const [selectedTimer, setSelectedTimer]  = useState(T_STOPWATCH);
+    // Fetch content from the workout
+    const { ...workoutContext } = useContext(WorkoutSettingsContext);
+    const { workouts } =  workoutContext; 
+
+    const [selectedTimer, setSelectedTimer]  = useState(workouts[0].type);
     const [startTime, setStartTime] = useState(0);
     const [stopTime, setStopTime] = useState(0);
     const [totalRounds, setTotalRounds] = useState(0);
@@ -51,6 +57,7 @@ export const SettingsProvider = ({ children }) => {
     // Checks if persistence is turned on in the configurations
     const isPersistent = () => TIMER_SETTINGS.configurations.persistence;
 
+
     return <SettingsContext.Provider 
             value={{ 
                 selectedTimer, setSelectedTimer,
@@ -58,7 +65,8 @@ export const SettingsProvider = ({ children }) => {
                 stopTime, setStopTime,
                 totalRounds, setTotalRounds,
                 restStartTime, setRestStartTime,
-                getSettings, setSettings, isPersistent
+                getSettings, setSettings, isPersistent,
+                ...workoutContext
             }}>
             {children}
         </SettingsContext.Provider>;
