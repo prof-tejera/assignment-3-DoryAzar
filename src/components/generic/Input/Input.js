@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import './Input.css';
 import PropTypes from 'prop-types';
 
-const Input = (props) => {
+const Input = memo((props) => {
 
     const { label, placeholder, ...inputAttributes } = props;
     const [value, setValue] = useState(props.value);
@@ -30,7 +30,7 @@ const Input = (props) => {
         </>
     );
 
-}
+});
 
 Input.propTypes = {
     label: PropTypes.string,

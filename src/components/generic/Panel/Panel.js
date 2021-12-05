@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import './Panel.css';
 import PropTypes from 'prop-types';
 
-const Panel =  (props) => {
+const Panel =  memo((props) => {
   const { id = "", children }  = props;
 
   return (
@@ -11,7 +12,7 @@ const Panel =  (props) => {
         </div>
     </div>
   );
-}
+});
 
 
 Panel.propTypes  = {

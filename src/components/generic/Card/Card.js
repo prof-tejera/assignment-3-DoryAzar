@@ -1,8 +1,9 @@
+import {memo} from 'react';
 import './Card.css';
 import className from 'classnames';
 import PropTypes from 'prop-types';
 
-const Card =  (props) => {
+const Card =  memo((props) => {
     const { side ="front", children } = props;
 
     const cardStyle = [{
@@ -14,7 +15,7 @@ const Card =  (props) => {
             { children }
         </div>
     );
-}
+});
 
 Card.propTypes = {
     side: PropTypes.string,

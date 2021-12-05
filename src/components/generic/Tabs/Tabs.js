@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { TimerContext } from '../../../platform/TimerProvider';
 import { Fragment } from 'react';
 import './Tabs.css';
 import PropTypes from 'prop-types';
 import className from 'classnames';
 
-const Tabs = ({ tabItems }) => {
+const Tabs = memo(({ tabItems }) => {
 
     const {selectedTimer, setSelectedTimer, setTimerCounting } = useContext(TimerContext);
     
@@ -45,7 +45,7 @@ const Tabs = ({ tabItems }) => {
             </div>
         </div>
     );
-}
+});
 
 
 Tabs.propTypes = {

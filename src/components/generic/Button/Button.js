@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import './Button.css';
 import className from 'classnames';
 import PropTypes from 'prop-types';
 import { T_STOPWATCH } from '../../../utils/helpers';
 
-const Button =  ({ buttonTheme  = T_STOPWATCH, ...props }) => {
+const Button =  memo(({ buttonTheme  = T_STOPWATCH, ...props }) => {
 
     const { 
         id,
@@ -39,7 +40,7 @@ const Button =  ({ buttonTheme  = T_STOPWATCH, ...props }) => {
         </div>
     );
 
-}
+});
 
 Button.propTypes = {
     id: PropTypes.string,

@@ -1,11 +1,11 @@
-import  { useContext, useEffect } from 'react';
+import  { memo, useContext, useEffect } from 'react';
 import './Display.css';
 import PropTypes from 'prop-types';
 import {  TimerContext } from '../../../platform/TimerProvider';
 import * as utils from "../../../utils/helpers";
 import className from 'classnames';
 
-const Display = () => {
+const Display = memo(() => {
     const { counter, timerCounting,  statusMessage, setStatusMessage, 
         messenger, isComplete, setCounter, startTime, selectedTimer } = useContext(TimerContext);
 
@@ -43,7 +43,7 @@ const Display = () => {
         </div>
 
     );
-}
+});
 
 
 Display.propTypes = {
