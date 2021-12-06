@@ -3,22 +3,22 @@ import Stopwatch from "../components/timers/Stopwatch";
 import Countdown from "../components/timers/Countdown";
 import XY from "../components/timers/XY";
 import Tabata from "../components/timers/Tabata";
-import { T_STOPWATCH, T_COUNTDOWN, T_XY, T_TABATA } from '../utils/helpers';
+import { T_COUNTDOWN, T_XY, T_TABATA } from '../utils/helpers';
 
 export const WorkoutSettingsContext = React.createContext({});
 
 
-const WORKOUTS = [
-    { id: 0, title: "workout 1", type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 2}, C: <Stopwatch  key={0} settings={{"startTime": 0,"stopTime": 2}} /> },
-    { id: 1, title: "workout 2", type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 3} , C: <Stopwatch  key={1} settings={{"startTime": 0,"stopTime": 3}} /> },
-    // { id: 2, title: "workout 3", type: T_COUNTDOWN, settings: {"startTime": 10,"stopTime": 0},  C: <Countdown  key={2} settings={{"startTime": 10,"stopTime": 0}} /> },
-    // { id: 3, title: "workout 4", type: T_XY, settings: {"startTime": 10,"totalRounds": 2}, C: <XY key={3} settings={{"startTime": 10,"totalRounds": 2}}/> },
-    // { id: 4, title: "workout 5", type: T_TABATA, settings: {"startTime": 10,"restStartTime": 5,"totalRounds": 5}, C: <Tabata key={4} settings={{"startTime": 10,"restStartTime": 5,"totalRounds": 5}}/> }
-  ];
+// const WORKOUTS = [
+//     { id: 0, title: "workout 1", type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 2}, C: <Stopwatch  key={0} settings={{"startTime": 0,"stopTime": 2}} /> },
+//     { id: 1, title: "workout 2", type: T_STOPWATCH, settings: {"startTime": 0,"stopTime": 3} , C: <Stopwatch  key={1} settings={{"startTime": 0,"stopTime": 3}} /> },
+//     { id: 2, title: "workout 3", type: T_COUNTDOWN, settings: {"startTime": 10,"stopTime": 0},  C: <Countdown  key={2} settings={{"startTime": 10,"stopTime": 0}} /> },
+//     { id: 3, title: "workout 4", type: T_XY, settings: {"startTime": 10,"totalRounds": 2}, C: <XY key={3} settings={{"startTime": 10,"totalRounds": 2}}/> },
+//     { id: 4, title: "workout 5", type: T_TABATA, settings: {"startTime": 10,"restStartTime": 5,"totalRounds": 5}, C: <Tabata key={4} settings={{"startTime": 10,"restStartTime": 5,"totalRounds": 5}}/> }
+//   ];
 
 export const WorkoutSettingsProvider = ({ children }) => {
 
-    const [ workouts, setWorkouts ] = useState(WORKOUTS);
+    const [ workouts, setWorkouts ] = useState([]);
     const [ currentWorkout, setCurrentWorkout ]  = useState(0);
 
 
@@ -26,10 +26,11 @@ export const WorkoutSettingsProvider = ({ children }) => {
     const createWorkout  = (title, type, settings) => {
         const id = workouts.length;
         setWorkouts([...workouts, {
-            id, 
-            title,
-            type, 
-            "C": componentizeWorkout(type, settings)
+            "id": id, 
+            "title": title,
+            "type": type,
+            "settings": settings, 
+            "C": componentizeWorkout(id, type, settings)
         }]);
         return id;
     }
@@ -103,7 +104,7 @@ export const WorkoutSettingsProvider = ({ children }) => {
             return total + duration;
         }
 
-        return !isEmpty() ? WORKOUTS.reduce(totalWorkout, 0) : 0;
+        return !isEmpty() ? workouts.reduce(totalWorkout, 0) : 0;
     }
 
     return <WorkoutSettingsContext.Provider 

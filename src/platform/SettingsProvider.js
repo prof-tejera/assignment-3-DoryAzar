@@ -12,7 +12,7 @@ export const SettingsProvider = ({ children }) => {
     const { ...workoutContext } = useContext(WorkoutSettingsContext);
     const { workouts } =  workoutContext; 
 
-    const [selectedTimer, setSelectedTimer]  = useState(workouts[0]?.type);
+    const [selectedTimer, setSelectedTimer]  = useState(workouts[0]?.type || T_STOPWATCH);
     const [startTime, setStartTime] = useState(0);
     const [stopTime, setStopTime] = useState(0);
     const [totalRounds, setTotalRounds] = useState(0);

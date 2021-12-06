@@ -14,7 +14,7 @@ const Timer = () => {
 
   const { ...context } = useContext(TimerContext);
   const { timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings, 
-    resetWorkout, workouts, getWorkout, updateWorkout, currentWorkout, currentWorkoutId, deleteWorkout } = context;
+    resetWorkout, resetTimer, getWorkout, updateWorkout, currentWorkout, currentWorkoutId, deleteWorkout } = context;
   const settings = TIMER_SETTINGS.schema[selectedTimer];
 
   // play button style
@@ -47,12 +47,17 @@ const Timer = () => {
     if (workout) {
         workout.settings = inputSettings;
         updateWorkout(workout);
-        console.log(workouts);
     }
     flipSide();
   }
 
+  // Handle Resset
+  const handleReset = () => {
+    resetTimer();
+    resetWorkout();
+  }
 
+  // Contextual delete of workout
   const handleDelete  =  () =>  {
     const id = currentWorkoutId();
     deleteWorkout({"id": id});
@@ -107,7 +112,7 @@ const Timer = () => {
                 value="reset"
                 classifiers = "primary"
                 isIconButton = {true}
-                onClick={resetWorkout}
+                onClick={handleReset}
                 iconName="refresh-outline"
                 buttonTheme={selectedTimer}
               />

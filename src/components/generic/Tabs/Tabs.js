@@ -14,7 +14,7 @@ const Tabs = memo(({ tabItems }) => {
 
     // Tab style
     const tabStyle = [{
-        [`${selectedTimer.toLowerCase()}`]: true, 
+        [`${tabSelected.toLowerCase()}`]: true, 
     }];
     
     const handleChange =  (e) => {

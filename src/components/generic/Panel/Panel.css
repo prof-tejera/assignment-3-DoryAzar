@@ -53,10 +53,8 @@ img{
     width: auto;
 }
 
-.route-link {
-    margin-bottom: 2rem;
-    padding: 0;
-    font-size: var(--medium_text);
+p.conversation {
     color: var(--textDark);
-    text-decoration: underline;
+    font-size: var(--medium_text);
+    padding: 0 8rem;
 }

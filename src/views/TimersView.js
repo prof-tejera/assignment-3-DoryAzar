@@ -15,21 +15,25 @@ const TimersView = () => {
 
   return (
     <>
-      <div>
-        <div>Total Workouts: {workouts.length}</div>
-        <div>Total Workouts Duration: {calculateTotalWorkout()} seconds</div>
-        {!isEmpty() && <div>Current Workout: {getWorkoutProperty(hasNext()? currentWorkout : currentWorkout - 1, 'title')} - {selectedTimer}</div>}
-      </div>
+      {!isEmpty() && 
+        <div>
+          <div>Total Workouts: {workouts.length}</div>
+          <div>Total Workouts Duration: {calculateTotalWorkout()} seconds</div>
+          <div>Current Workout: {getWorkoutProperty(hasNext()? currentWorkout : currentWorkout - 1, 'title')} - {selectedTimer}</div>
+        </div>
+      }
       <Panel id="timer_panel">
         {isEmpty()? (
           <>
             <img src={process.env.PUBLIC_URL + '/fitness.png'} alt="No Workouts found"/>
-            <Link className="route-link" to="/add">Add a workout set</Link>
+            <p className="conversation">Go ahead and start creating your workout by adding sets</p>
+            <Link className="route-link" to="/add">Add workout sets</Link>
           </>
         ) : (
          hasNext()? (workouts[currentWorkout].C) : (workouts[currentWorkout-1].C)
         )}
       </Panel>
+      {!isEmpty() && <Link className="route-link" to="/add">Add workout sets</Link>}
     </>
 
   );

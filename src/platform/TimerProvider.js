@@ -31,18 +31,9 @@ export const TimerProvider = ({ children }) => {
     // Start the timer
     const startTimer = () => {
         setToComplete(false);
-        
-        // counting up
-        if (T_STOPWATCH) 
-            return setInterval(() => {
-                startCounting();
-            }, 1000);
-
-        // counting down can be done with timeout
-        else 
-            return setTimeout(() => {
-                startCounting();
-            }, startTime)
+        return setInterval(() => {
+            startCounting();
+        }, 1000);
     }
 
         // private function: start the counter
@@ -77,7 +68,6 @@ export const TimerProvider = ({ children }) => {
     // Pause the timer
     const pauseTimer = (interval) => {
         clearInterval(interval);
-        clearTimeout(interval);
     }
 
     // Reset the timer: keeps the timer runner
@@ -120,7 +110,6 @@ export const TimerProvider = ({ children }) => {
     // End the timer
     const completeTimer = (interval) => {
         clearInterval(interval);
-        clearTimeout(interval);
         if (!hasNext())
             toggleCounting();
         setCounter(stopTime);

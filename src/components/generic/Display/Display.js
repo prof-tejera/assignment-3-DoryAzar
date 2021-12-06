@@ -7,7 +7,7 @@ import className from 'classnames';
 
 const Display = memo(() => {
     const { counter, timerCounting,  statusMessage, setStatusMessage, 
-        messenger, isComplete, setCounter, startTime, selectedTimer } = useContext(TimerContext);
+        messenger, isComplete, setCounter, startTime, selectedTimer} = useContext(TimerContext);
 
     const successStyle = [{
         [`${selectedTimer.toLowerCase()}`]: !isComplete, 

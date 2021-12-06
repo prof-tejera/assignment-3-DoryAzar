@@ -3,12 +3,6 @@
  * @author: Dory Azar
 */
 
-.btn_bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
 .icon_btn {
     width: 4rem;
     height: 4rem;
