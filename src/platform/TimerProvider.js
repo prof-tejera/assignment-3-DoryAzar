@@ -14,7 +14,8 @@ export const TimerProvider = ({ children }) => {
         startTime,
         stopTime,
         restStartTime,
-        totalRounds, setSettings, hasNext
+        totalRounds, setSettings, 
+        hasNext, setWorkoutComplete, nextWorkout
      } = settingsContext;
 
     const [statusMessage, setStatusMessage] = useState("");
@@ -25,7 +26,7 @@ export const TimerProvider = ({ children }) => {
     const [isFrontSide, setIsFrontSide] = useState(true);
     const [isComplete, setToComplete] = useState(false);
 
-    const [restRound, setRestRound] = useState(1);
+    const [restRound, setRestRound] = useState(0);
 
 
     // Start the timer
@@ -55,7 +56,7 @@ export const TimerProvider = ({ children }) => {
                     }
                     break;
                 default:
-                    // /CountDown and XY have the same principles
+                    // CountDown and XY have the same principles
                     setCounter((counter) => counter - 1);
                     if (counter === 0) {
                         resetTimer(false);
@@ -77,7 +78,6 @@ export const TimerProvider = ({ children }) => {
         setCounter(mode === WORK_MODE? startTime : restStartTime);
 
         if (!!resetMode) {
-            setMode(WORK_MODE); 
             setToComplete(false);
             setTimerCounting(false);
             setCurrentRound(1);
@@ -103,15 +103,21 @@ export const TimerProvider = ({ children }) => {
     // Resets all the timer controls upon  exit
     const exitTimer = useCallback(() => {
         // setTimerCounting(false);
+        setMode(WORK_MODE);
         setToComplete(false);
         setCurrentRound(1);
+        setRestRound(0);
     }, []);
 
     // End the timer
     const completeTimer = (interval) => {
         clearInterval(interval);
-        if (!hasNext())
+        if (hasNext()) 
+            nextWorkout();
+        else  {
             toggleCounting();
+            setWorkoutComplete(true);
+        } 
         setCounter(stopTime);
         setCurrentRound(totalRounds);
         setRestRound(totalRounds);

@@ -23,7 +23,7 @@ export const useTimerStarter = (context) => {
 };
 
 //Hook use to initialize timers
-export const useTimerInitializer = (inputSettings, context) => {
+export const useTimerInitializer = (inputSettings, context, workouts) => {
 
   const {setSettings, exitTimer } = context; 
 

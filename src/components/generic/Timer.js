@@ -13,8 +13,8 @@ const CONFIG = TIMER_SETTINGS.configurations;
 const Timer = () => {
 
   const { ...context } = useContext(TimerContext);
-  const { timerCounting, toggleCounting, toggleSide, completeTimer, selectedTimer, isComplete, setSettings, 
-    resetWorkout, resetTimer, getWorkout, updateWorkout, currentWorkout, currentWorkoutId, deleteWorkout } = context;
+  const { timerCounting, toggleCounting, toggleSide, selectedTimer, isComplete, setSettings, 
+    resetWorkout, resetTimer, getWorkout, updateWorkout, currentWorkout, currentWorkoutId, deleteWorkout, isLastWorkout, workouts, completeTimer } = context;
   const settings = TIMER_SETTINGS.schema[selectedTimer];
 
   // play button style
@@ -22,7 +22,6 @@ const Timer = () => {
     "primary": true,
     "disabled": isComplete
   }];
-
 
   // Flips the card to display settings
   const flipSide = () => {
@@ -59,8 +58,9 @@ const Timer = () => {
 
   // Contextual delete of workout
   const handleDelete  =  () =>  {
-    const id = currentWorkoutId();
+    const id = isLastWorkout() ? workouts.length - 1 : currentWorkoutId();
     deleteWorkout({"id": id});
+    resetWorkout();
     flipSide();
   }
 

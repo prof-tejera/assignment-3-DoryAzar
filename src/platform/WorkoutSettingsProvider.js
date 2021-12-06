@@ -20,6 +20,7 @@ export const WorkoutSettingsProvider = ({ children }) => {
 
     const [ workouts, setWorkouts ] = useState([]);
     const [ currentWorkout, setCurrentWorkout ]  = useState(0);
+    const [ isWorkoutComplete, setWorkoutComplete] = useState(false);
 
 
     // CRUD: Create workout
@@ -83,6 +84,9 @@ export const WorkoutSettingsProvider = ({ children }) => {
     // Checks if current workout is  within workouts
     const hasNext = () => currentWorkout < workouts.length;
 
+    // Checks if current workout is the last
+    const isLastWorkout = () =>  currentWorkout === workouts.length;
+
 
     // Get the next workout
     const nextWorkout = () => {
@@ -111,6 +115,7 @@ export const WorkoutSettingsProvider = ({ children }) => {
             value={{ 
                 workouts, setWorkouts, hasNext, isEmpty,
                 currentWorkout, setCurrentWorkout, nextWorkout, 
+                isWorkoutComplete, setWorkoutComplete, isLastWorkout,
                 resetWorkout, calculateTotalWorkout,
                 createWorkout, retrieveWorkout, updateWorkout, deleteWorkout, 
                 componentizeWorkout, getWorkout, getWorkoutPosition, getWorkoutProperty, currentWorkoutId
