@@ -43,6 +43,7 @@ const AddView = () => {
  
     return (
         <>  
+            <div className="spacer-10"></div>
             <h1>What type of workout set timer?</h1>
             <div className="spacer-4"></div>
             <Tabs tabItems={[T_STOPWATCH, T_COUNTDOWN, T_XY, T_TABATA]} />
@@ -59,6 +60,7 @@ const AddView = () => {
                                     placeholder="Name for this workout set"
                                     value={`${selectedTimer} ${workouts.length}`}
                                     id="title"
+                                    maxLength={20}
                         />
                         {settings.map((setting, index) => 
                             <Input  key={index}

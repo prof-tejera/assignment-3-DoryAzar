@@ -19,7 +19,7 @@ const App = () => {
             <nav className="navigation">
                 <ul>
                   <li key={1}>
-                    <Link to="/">Workouts</Link>
+                    <Link to="/">My Workout</Link>
                   </li>
                   <li key={2}>
                     <Link to="/docs">Documentation</Link>

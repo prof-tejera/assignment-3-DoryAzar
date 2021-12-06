@@ -53,6 +53,13 @@ export const WorkoutSettingsProvider = ({ children }) => {
         setWorkouts(updatedWorkouts);
     }
 
+    // Delete current workout
+    const deleteCurrentWorkout = () => {
+        const id = isLastWorkout() ? workouts.length - 1 : currentWorkoutId();
+        deleteWorkout({"id": id});
+        resetWorkout();
+    }
+
     // Get workout based on position
     const getWorkout = (position) => !isEmpty() && hasNext()? workouts[position] : null;
 
@@ -87,6 +94,9 @@ export const WorkoutSettingsProvider = ({ children }) => {
     // Checks if current workout is the last
     const isLastWorkout = () =>  currentWorkout === workouts.length;
 
+    // Check if workout is the current workout
+    const isCurrentWorkout = (id) => currentWorkout === id;
+
 
     // Get the next workout
     const nextWorkout = () => {
@@ -111,13 +121,19 @@ export const WorkoutSettingsProvider = ({ children }) => {
         return !isEmpty() ? workouts.reduce(totalWorkout, 0) : 0;
     }
 
+    const scrollToCurrentWorkout = () => {
+        const elementId =  document.querySelector(`#element${currentWorkout}`) || null;
+        if (elementId)
+          elementId.scrollIntoView();
+    }
+
     return <WorkoutSettingsContext.Provider 
             value={{ 
                 workouts, setWorkouts, hasNext, isEmpty,
                 currentWorkout, setCurrentWorkout, nextWorkout, 
                 isWorkoutComplete, setWorkoutComplete, isLastWorkout,
-                resetWorkout, calculateTotalWorkout,
-                createWorkout, retrieveWorkout, updateWorkout, deleteWorkout, 
+                resetWorkout, calculateTotalWorkout, isCurrentWorkout, scrollToCurrentWorkout,
+                createWorkout, retrieveWorkout, updateWorkout, deleteWorkout, deleteCurrentWorkout,
                 componentizeWorkout, getWorkout, getWorkoutPosition, getWorkoutProperty, currentWorkoutId
             }}>
             {children}

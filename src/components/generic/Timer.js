@@ -14,7 +14,8 @@ const Timer = () => {
 
   const { ...context } = useContext(TimerContext);
   const { timerCounting, toggleCounting, toggleSide, selectedTimer, isComplete, setSettings, 
-    resetWorkout, resetTimer, getWorkout, updateWorkout, currentWorkout, currentWorkoutId, deleteWorkout, isLastWorkout, workouts, completeTimer } = context;
+    resetWorkout, resetTimer, getWorkout, updateWorkout, currentWorkout, 
+    deleteCurrentWorkout, completeTimer } = context;
   const settings = TIMER_SETTINGS.schema[selectedTimer];
 
   // play button style
@@ -58,9 +59,7 @@ const Timer = () => {
 
   // Contextual delete of workout
   const handleDelete  =  () =>  {
-    const id = isLastWorkout() ? workouts.length - 1 : currentWorkoutId();
-    deleteWorkout({"id": id});
-    resetWorkout();
+    deleteCurrentWorkout();
     flipSide();
   }
 

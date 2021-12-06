@@ -26,6 +26,7 @@
     --xsmall_text: 0.5rem;
     --small_text: 0.625rem;
     --default_text: 1rem;
+    --default_primary_text: 1.2rem;
     --medium_text: 1.6rem;
     --mediumlarge_text: 2rem;
     --large_text: 2.5rem;
@@ -176,6 +177,11 @@ td {
 .spacer-6 {
     min-height: 4rem;
     max-height: 6rem;
+}
+
+.spacer-10 {
+    min-height: 8rem;
+    max-height: 10rem;
 }
 
 .horizontal-spacer-2 {

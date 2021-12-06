@@ -44,7 +44,7 @@ const Button =  memo(({ buttonTheme  = T_STOPWATCH, ...props }) => {
 
 Button.propTypes = {
     id: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     isIconButton:  PropTypes.bool,
     iconName: PropTypes.string,
     classifiers: PropTypes.string,
