@@ -39,7 +39,7 @@ const TimersView = () => {
 				<div className="vertical_inline">
 				<Dashboard>
 					<h1>My Workout</h1>
-					<div>{workouts.length} sets for a total of {calculateTotalWorkout()} seconds </div>
+					<div>{workouts.length} set(s) for a total of {calculateTotalWorkout()} seconds </div>
 					<div className="scrollable">
 					{workouts.map((workout, index) => 
 							<Fragment key={index}>

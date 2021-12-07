@@ -86,6 +86,7 @@ const AddView = () => {
                         buttonTheme={selectedTimer}
                     />
                     <Button 
+                    data-test="redirect"
                     onClick={addAndRedirect}
                     buttonTheme={selectedTimer}>
                         Add and go
