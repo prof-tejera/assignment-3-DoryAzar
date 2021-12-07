@@ -2,18 +2,28 @@
 
 ## Submission 
 
-[Visit Neumorphic Timers](https://prof-tejera.github.io/assignment-3-DoryAzar/)
+[Visit Neumorphic Workout](https://prof-tejera.github.io/assignment-3-DoryAzar/)
 
 ## What has been implemented
 
-+ Workout Home that executes all the configured sets
++ Workout Home that executes all the configured timers
 + The total workout duration
-+ The total number of sets configured in a workout
-+ Ability to add and remove a workout set
-+ Ability to update the settings of a workout set
++ The total number of timers configured in a workout
++ Ability to see the list of all timers that have been configured
++ Ability to add and remove workout sets from an "/add" route
++ Ability to update the settings of a timer contextually
++ Ability to remove a timer from a workout contextually
 + Ability to start/pause workout
 + Ability to skip (fast-forward) a workout set
 + Ability to restart the whole workout
++ BONUS: Cypress tests written and deployed as actions on Github
++ FEEDBACK: Feedback from previous assignments have been corrected
+
+## Known Issues
+
++ Visual issue with Firefox as identified in previous assignments. The issue has been resolved with a slight visual change on Firefox only.
++ Some of the input fields in the settings do not react to the click from the first try as mentioned in the feedback. After investigating this might be a byproduct of the react synthesized divs. Clicking on an area where there is no text works.
+
 
 ## Credits
 

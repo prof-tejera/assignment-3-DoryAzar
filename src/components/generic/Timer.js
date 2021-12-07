@@ -26,6 +26,7 @@ const Timer = () => {
 
   // Flips the card to display settings
   const flipSide = () => {
+      resetTimer();
       toggleSide();
       const card = document.querySelector("#timer_panel");
       if (card) card.classList.toggle('is-flipped');
