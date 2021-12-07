@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 const TimersView = () => {
 
 	const { workouts, selectedTimer, setSelectedTimer, currentWorkout, hasNext, isEmpty, 
-		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout } = useContext(TimerContext);
+		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout, isWorkoutComplete } = useContext(TimerContext);
 
 	const history = useHistory();
 
@@ -22,10 +22,10 @@ const TimersView = () => {
 
 	// Handle the deletion from the list
 	const handleDelete = (e) => {
-		const id = parseInt(e.target.attributes.value.value) || null;
-		if (id) {
+		const id = parseInt(e.target.attributes.value.value);
+		if (id || id === 0) {
 			deleteWorkout({"id": id});
-		}	
+		} 
 	}
 
 	// handle redirect
@@ -51,10 +51,10 @@ const TimersView = () => {
 										</div>
 									</div>
 									<Button 
-										id = "delete_btn"
+										id = {`delete_btn_${index}`}
 										value={getWorkoutProperty(index, 'id')}
 										isIconButton = {true}
-										onClick={workout.id === currentWorkout? deleteCurrentWorkout : handleDelete}
+										onClick={index === currentWorkout? deleteCurrentWorkout : handleDelete}
 										iconName="trash-outline"
 										buttonTheme={selectedTimer}
 									/>
@@ -76,10 +76,11 @@ const TimersView = () => {
 					<div className="spacer-6"></div>
 				</>
 				) : (
-				hasNext()? (workouts[currentWorkout].C) : (workouts[currentWorkout-1].C)
+				hasNext()? (workouts[currentWorkout].C) : isWorkoutComplete? (workouts[0].C)  : (workouts[currentWorkout-1].C)
 				)}
 			</Panel>
 			<Button 
+				data-test="add"
 				onClick={handleRedirect}
 				buttonTheme={selectedTimer}>
 					Add sets
