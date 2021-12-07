@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/assignment-3-DoryAzar/static/css/main.9f0d0efe.chunk.css",
-    "main.js": "/assignment-3-DoryAzar/static/js/main.8d2ccd4f.chunk.js",
-    "main.js.map": "/assignment-3-DoryAzar/static/js/main.8d2ccd4f.chunk.js.map",
+    "main.css": "/assignment-3-DoryAzar/static/css/main.5a4e8ea0.chunk.css",
+    "main.js": "/assignment-3-DoryAzar/static/js/main.a51c81a4.chunk.js",
+    "main.js.map": "/assignment-3-DoryAzar/static/js/main.a51c81a4.chunk.js.map",
     "runtime-main.js": "/assignment-3-DoryAzar/static/js/runtime-main.fb8e4d72.js",
     "runtime-main.js.map": "/assignment-3-DoryAzar/static/js/runtime-main.fb8e4d72.js.map",
     "static/js/2.56027799.chunk.js": "/assignment-3-DoryAzar/static/js/2.56027799.chunk.js",
     "static/js/2.56027799.chunk.js.map": "/assignment-3-DoryAzar/static/js/2.56027799.chunk.js.map",
     "index.html": "/assignment-3-DoryAzar/index.html",
-    "static/css/main.9f0d0efe.chunk.css.map": "/assignment-3-DoryAzar/static/css/main.9f0d0efe.chunk.css.map",
+    "static/css/main.5a4e8ea0.chunk.css.map": "/assignment-3-DoryAzar/static/css/main.5a4e8ea0.chunk.css.map",
     "static/js/2.56027799.chunk.js.LICENSE.txt": "/assignment-3-DoryAzar/static/js/2.56027799.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fb8e4d72.js",
     "static/js/2.56027799.chunk.js",
-    "static/css/main.9f0d0efe.chunk.css",
-    "static/js/main.8d2ccd4f.chunk.js"
+    "static/css/main.5a4e8ea0.chunk.css",
+    "static/js/main.a51c81a4.chunk.js"
   ]
 }
