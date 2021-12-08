@@ -16,6 +16,10 @@ export const useTimerStarter = (context) => {
     
     if (isLastWorkout()) {
       completeTimerRef.current(runningTimer.current);
+      clearInterval(runningTimer.current);
+    }
+    return () => {
+      clearTimeout(runningDelay.current);
     }
   }, [isLastWorkout])
 
