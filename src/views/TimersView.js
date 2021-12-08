@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 const TimersView = () => {
 
-	const { workouts, selectedTimer, setSelectedTimer, currentWorkout, hasNext, isEmpty, 
+	const { workouts, selectedTimer, setSelectedTimer, resetTimer, currentWorkout, hasNext, isEmpty, 
 		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout, isWorkoutComplete } = useContext(TimerContext);
 
 	const history = useHistory();
@@ -22,10 +22,12 @@ const TimersView = () => {
 
 	// Handle the deletion from the list
 	const handleDelete = (e) => {
+		resetTimer();
 		const id = parseInt(e.target.attributes.value.value);
-		if (id || id === 0) {
-			deleteWorkout({"id": id});
-		} 
+		if (id === currentWorkout) 
+			deleteCurrentWorkout()
+		else if (id || id === 0) 
+				deleteWorkout({"id": id});
 	}
 
 	// handle redirect
@@ -39,7 +41,7 @@ const TimersView = () => {
 				<div className="vertical_inline">
 				<Dashboard>
 					<h1>My Workout</h1>
-					<div>{workouts.length} set(s) for a total of {calculateTotalWorkout()} seconds </div>
+					<div>{workouts.length} set(s) for a total of <span id="total_duration">{calculateTotalWorkout()}</span> seconds </div>
 					<div className="scrollable">
 					{workouts.map((workout, index) => 
 							<Fragment key={index}>
@@ -54,7 +56,7 @@ const TimersView = () => {
 										id = {`delete_btn_${index}`}
 										value={getWorkoutProperty(index, 'id')}
 										isIconButton = {true}
-										onClick={index === currentWorkout? deleteCurrentWorkout : handleDelete}
+										onClick={handleDelete}
 										iconName="trash-outline"
 										buttonTheme={selectedTimer}
 									/>

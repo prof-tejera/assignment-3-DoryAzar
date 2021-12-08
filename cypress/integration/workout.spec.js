@@ -1,8 +1,12 @@
-import  {useState} from 'react';
-import { timers, addTimer, isEmptyState, addButtonVisible, openAddTimer, deleteTimer, appRestarted } from '../tests';
+import { addTimer, isEmptyState, addButtonVisible, openAddTimer, deleteTimer, 
+    appRestarted, runWorkout, pauseWorkout, refresh, skipTimer, resetWorkout } from '../tests';
 
 /// <reference types="cypress" />
 
+
+// Test Controls
+const timersToAdd = 2;
+const localhost = 'http://localhost:3000';
 
 describe('Testing Home', () => {   
     
@@ -11,7 +15,7 @@ describe('Testing Home', () => {
     }) 
     
     it('The app is opened', () => {   
-        cy.visit('http://localhost:3000') 
+        refresh(localhost);
     })
 
     it('App started and is mounted correctly', () => {
@@ -19,18 +23,20 @@ describe('Testing Home', () => {
     })
 
     it('empty state image is loaded', () => {
-        isEmptyState()
+        isEmptyState();
     })
 
     it('"add set" button is loaded', () =>{
-        addButtonVisible()
+        addButtonVisible();
     })
 
-    it('opening add set form', () =>{
+    it('open "add set" form', () =>{
         openAddTimer();
+
     })
 
     it('add one timer randomly with default settings', () => {
+        refresh(localhost);
         addTimer();
     })
 
@@ -38,7 +44,35 @@ describe('Testing Home', () => {
         deleteTimer(0);
     })
 
+    it((`add ${timersToAdd} random default timers and validate total duration`), () => {
+        addTimer(timersToAdd); 
+    })
 
+    it(('start workout'), () => {
+        runWorkout(timersToAdd);
+    })
+
+    it(('start workout, pause it'), () => {
+        refresh(localhost);
+        addTimer(timersToAdd);
+        cy.wait(2000)
+        pauseWorkout();
+    })
+
+    it(('start workout, skip the first'), () => {
+        refresh(localhost);
+        addTimer(timersToAdd);
+        cy.wait(2000)
+        skipTimer(0);
+    })
+
+    it(('start workout, reset when it passes first timer'), () => {
+        refresh(localhost);
+        addTimer(timersToAdd);
+        cy.wait(2000)
+        skipTimer(0);
+        resetWorkout();
+    })
 
 
 })

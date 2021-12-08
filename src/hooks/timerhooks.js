@@ -10,7 +10,8 @@ export const useTimerStarter = (context) => {
 
   useEffect(() => {
     if (timerCounting && !isTimerOver()) runningTimer.current = startTimer()
-    else if (isTimerOver()) runningDelay.current = setTimeout(hasNext()? nextWorkout : completeTimer(runningTimer.current), 1000);
+    // adding one second timeout for switching context between timers
+    else if (isTimerOver()) runningDelay.current = setTimeout(hasNext()? nextWorkout : completeTimer(runningTimer.current), 1000); 
     else pauseTimer(runningTimer.current); 
     return () => {
       pauseTimer(runningTimer.current);

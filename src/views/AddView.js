@@ -14,7 +14,7 @@ const AddView = () => {
 
     const { ...context } = useContext(TimerContext);
     
-    const { selectedTimer, workouts, createWorkout, resetWorkout } = context;
+    const { selectedTimer, createWorkout, resetWorkout, addCounter } = context;
     
     const settings = TIMER_SETTINGS.schema[selectedTimer];
     const defaultSettings = TIMER_SETTINGS.settings[selectedTimer];
@@ -58,7 +58,7 @@ const AddView = () => {
                                     label="Workout set name"
                                     type="text"
                                     placeholder="Name for this workout set"
-                                    value={`${selectedTimer} ${workouts.length}`}
+                                    value={`${selectedTimer} ${addCounter}`}
                                     id="title"
                                     maxLength={20}
                         />
