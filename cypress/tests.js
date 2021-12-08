@@ -102,7 +102,7 @@ export const runWorkout = (timersToAdd) => {
     cy.wait(1000)
     cy.get('#start_btn').should('not.exist')
     cy.wait(totalWorkout)
-    cy.wait(5000)  // test safety transition
+    cy.wait(10000)  // test safety transition
     cy.get('#start_btn').should('exist')
 }
 
