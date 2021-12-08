@@ -54,7 +54,7 @@ export const addTimer = (number = 1) => {
     for(let i = 0; i < number; i++){
         openAddTimer();
         cy.wait(1000)
-        const choice  = rand(2)
+        const choice  = rand(3)
         const name = `${timers[choice]} ${workoutCount}`
         cy.get(`#tab-${choice+1}`)
         .check({force: true})
@@ -94,8 +94,7 @@ export const deleteTimer  = (index) => {
 export const runWorkout = (timersToAdd) => {
 
     // 1 second is added in between timers 
-    // for transition and a safety 5 seconds for test needs
-    const transitionTime = timersToAdd + 5;
+    const transitionTime = timersToAdd + 1;
 
     const totalWorkout = (getWorkoutDuration()+transitionTime) * 1000;
     cy.get('#start_btn')
@@ -103,6 +102,7 @@ export const runWorkout = (timersToAdd) => {
     cy.wait(1000)
     cy.get('#start_btn').should('not.exist')
     cy.wait(totalWorkout)
+    cy.wait(5000)  // test safety transition
     cy.get('#start_btn').should('exist')
 }
 

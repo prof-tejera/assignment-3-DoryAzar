@@ -4,31 +4,23 @@ import { useEffect, useRef } from 'react';
 // Hook used to start the timers
 export const useTimerStarter = (context) => {
   
-  const {timerCounting, startTimer, isTimerOver, pauseTimer, completeTimer, nextWorkout, setTimerCounting, hasNext, isLastWorkout} = context;
+  const {timerCounting, startTimer, isTimerOver, pauseTimer, completeTimer, nextWorkout, setTimerCounting, isLastWorkout} = context;
   const runningTimer = useRef();
   const runningDelay = useRef();
   const completeTimerRef = useRef()
   completeTimerRef.current  = completeTimer;
-
-
-  // If it is the last Workout complete timers
-  useEffect(() => {
-    
-    if (isLastWorkout()) {
-      completeTimerRef.current(runningTimer.current);
-      clearInterval(runningTimer.current);
-    }
-    return () => {
-      clearTimeout(runningDelay.current);
-    }
-  }, [isLastWorkout])
 
   useEffect(() => {
 
     if (timerCounting && !isTimerOver()) runningTimer.current = startTimer()
     
     // adding one second timeout for switching context between timers
-    else if (isTimerOver()) runningDelay.current = setTimeout(hasNext()? nextWorkout : completeTimer(runningTimer.current), 1000); 
+    else if (isTimerOver()) {
+      if (isLastWorkout()) 
+        completeTimer(runningTimer.current);
+      else 
+        runningDelay.current = setTimeout(nextWorkout, 1000);
+    }
     
     else pauseTimer(runningTimer.current); 
     
@@ -36,7 +28,7 @@ export const useTimerStarter = (context) => {
       pauseTimer(runningTimer.current);
       clearTimeout(runningDelay.current);
     }
-  }, [timerCounting, startTimer, isTimerOver, pauseTimer, completeTimer, setTimerCounting, nextWorkout, hasNext]);
+  }, [timerCounting, startTimer, isTimerOver, pauseTimer, completeTimer, setTimerCounting, nextWorkout, isLastWorkout]);
 
   return  runningTimer.current;
 

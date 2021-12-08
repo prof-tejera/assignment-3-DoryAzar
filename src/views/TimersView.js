@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 const TimersView = () => {
 
 	const { workouts, selectedTimer, setSelectedTimer, resetTimer, currentWorkout, hasNext, isEmpty, 
-		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout, isWorkoutComplete } = useContext(TimerContext);
+		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout } = useContext(TimerContext);
 
 	const history = useHistory();
 
@@ -78,7 +78,7 @@ const TimersView = () => {
 					<div className="spacer-6"></div>
 				</>
 				) : (
-				hasNext()? (workouts[currentWorkout].C) : isWorkoutComplete? (workouts[0].C)  : (workouts[currentWorkout-1].C)
+				hasNext()? (workouts[currentWorkout].C)  : (workouts[currentWorkout-1].C)
 				)}
 			</Panel>
 			<Button 

@@ -45,6 +45,7 @@ describe('Testing Home', () => {
     })
 
     it((`add ${timersToAdd} random default timers and validate total duration`), () => {
+        refresh(localhost);
         addTimer(timersToAdd); 
     })
 
