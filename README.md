@@ -17,7 +17,7 @@
 + Ability to skip (fast-forward) a workout set
 + Ability to restart the whole workout
 + BONUS: Cypress tests written and deployed as actions on Github
-+ FEEDBACK: Feedback from previous assignments have been corrected
++ FEEDBACK: Feedback from previous assignments has been corrected
 
 ## Known Issues
 

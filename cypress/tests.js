@@ -94,7 +94,7 @@ export const deleteTimer  = (index) => {
 export const runWorkout = (timersToAdd) => {
 
     // 1 second is added in between timers for transition
-    const transitionTime = timersToAdd - 1;
+    const transitionTime = timersToAdd + 2;
 
     const totalWorkout = (getWorkoutDuration()+transitionTime) * 1000;
     cy.get('#start_btn')
