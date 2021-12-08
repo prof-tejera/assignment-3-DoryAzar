@@ -5,7 +5,7 @@ import { addTimer, isEmptyState, addButtonVisible, openAddTimer, deleteTimer,
 
 
 // Test Controls
-const timersToAdd = 15;
+const timersToAdd = 20;
 const localhost = 'http://localhost:3000';
 
 describe('Testing Home', () => {   
