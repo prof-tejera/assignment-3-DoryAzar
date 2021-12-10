@@ -1,0 +1,51 @@
+/**
+ * Neumorphic Input 
+ * @author: Dory Azar
+*/
+
+.settings-form {
+    width: 50%;
+    height: 100%;
+    overflow: scroll;
+    position: relative;
+    display: block;
+    align-items: left;
+    justify-content:space-evenly;
+    flex-direction: column;
+}
+
+fieldset {
+    display: flex;
+    min-height: 9rem;
+    border: none;
+    flex-direction:column;
+    padding: 1rem 0;
+}
+
+input {
+    max-width: 24rem;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: var(--medium_text);
+    padding-left: 1.4rem;
+    box-shadow: inset 0.2rem 0.2rem 0.5rem var(--bgLight-2), inset -0.2rem -0.2rem 0.5rem var(--tint);
+    background: none;
+    color: var(--textDark);
+}
+
+input::placeholder, input::-moz-placeholder, input::-webkit-placeholder, input:-ms-input-placeholder{
+    color: var(--textLight);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--bgLight-2), -0.2rem -0.2rem 0.5rem var(--tint);
+}
+
+.settings-label {
+    font-size: var(--medium_text);
+    color: var(--textDark);
+    padding-left: 0.5rem;
+    padding-bottom: 0.625rem;
+}

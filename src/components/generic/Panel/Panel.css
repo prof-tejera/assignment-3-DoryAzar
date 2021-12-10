@@ -1,0 +1,61 @@
+/**
+ * Neumorphic Panel 
+ * @author: Dory Azar
+*/
+
+.panel {
+    width: 50rem;
+    margin: 2rem;
+    min-width: 35rem;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.panel_inner {
+    overflow: visible !important;
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--bgLight-2), -0.2rem -0.2rem 1.8rem var(--tint);
+    transition: transform 1s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+}
+
+.panel_inner.is-flipped {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+}
+
+.panel h1 {
+    font-size: var(--large_text);
+    color: var(--textDark);
+    margin-top: 1rem;
+}
+
+
+img{
+    margin: 0;
+    padding: 0;
+    max-height: 20rem;
+    width: auto;
+}
+
+p.conversation {
+    color: var(--textDark);
+    font-size: var(--medium_text);
+    padding: 0 8rem;
+}

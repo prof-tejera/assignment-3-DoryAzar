@@ -1,0 +1,208 @@
+/**
+ * Neumorphic Timer Stylesheet
+ * Inspired by the work of several libraries found online
+ * @author: Dory Azar
+ * @description: Neumorphism (Neo Skeumoprhism) style of UI
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+:root {
+
+    --primary: #5e5ce6;
+    --primary-theme-2: #0a64ff;
+    --primary-theme-3: #8944ab;
+    --primary-theme-4: #ff375f;
+    --system: #000;
+    --success: #248a3e;
+    --tint: #FFFFFF;
+    --bgLight-1: #f2f2f7;
+    --bgLight-2: #e5e5ea;
+    --bgDark: #636366;
+    --textDark: #636366;
+    --textLight: #afafb2;
+
+    /* text sizes */
+    --xsmall_text: 0.5rem;
+    --small_text: 0.625rem;
+    --default_text: 1rem;
+    --default_primary_text: 1.2rem;
+    --medium_text: 1.6rem;
+    --mediumlarge_text: 2rem;
+    --large_text: 2.5rem;
+    --xlarge_text: 3rem;
+    --banner_text: 4rem;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    overflow-y: scroll;
+    background: var(--bgLight-1);
+}
+@media screen and (min-width: 900px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+/* Common Text Rendering */
+
+h1 {
+    color: var(--textDark);
+    font-size: var(--mediumlarge_text);
+    font-weight: lighter;
+}
+
+
+.route-link {
+    margin-bottom: 2rem;
+    padding: 0;
+    font-size: var(--medium_text);
+    color: var(--textDark);
+    text-decoration: underline;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+table  {
+    border: 1px solid var(--bgLight-2);
+}
+tr  {
+    border: none;
+}
+td,td:last-child,
+th {
+  border: none;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+    border-bottom: 1px solid  var(--bgLight-2);
+}
+
+td {
+    border-right: 1px solid  var(--bgLight-2);
+}
+
+/* GENERIC CLASSES */
+
+.show {
+    position: absolute;
+    opacity: 1;
+    transition: all 0.2s linear;
+}
+
+.hide {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.2s linear;
+}
+
+/* NAV  BAR */
+
+.navigation {
+    width:100%;
+    height: 4rem;
+    background-color: white;
+    position: fixed;
+    z-index: 1000;
+}
+
+.navigation ul  {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    padding: 0.625rem;
+}
+
+.navigation li {
+    font-size: var(--medium_text);
+    font-family: "Noto Sans", sans-serif;
+    margin: 0 1rem;
+    list-style-type: none;
+    font-variant: small-caps ;
+    text-transform: lowercase;
+
+}
+
+.navigation li a, .navigation li a:visited, .navigation li a:active {
+    color: var(--textDark);
+    text-decoration: none;
+}
+
+.navigation li a:hover  {
+    color: var(--system);
+}
+
+.stopwatch {
+    color: var(--primary) !important;
+}
+
+.countdown {
+    color: var(--primary-theme-2) !important;
+}
+
+.xy {
+    color: var(--primary-theme-3) !important;
+}
+
+.tabata {
+    color: var(--primary-theme-4) !important;
+}
+
+/* Spacers */
+.spacer-2 {
+    min-height: 1rem;
+    max-height: 2rem;
+}
+
+.spacer-4 {
+    min-height: 2rem;
+    max-height: 4rem;
+}
+
+.spacer-6 {
+    min-height: 4rem;
+    max-height: 6rem;
+}
+
+.spacer-10 {
+    min-height: 8rem;
+    max-height: 10rem;
+}
+
+.horizontal-spacer-2 {
+    min-width: 1rem;
+    max-width: 2rem;
+}
+
+.horizontal-spacer-4 {
+    min-width: 2rem;
+    max-width: 4rem;
+}
+
+.horizontal-spacer-6 {
+    min-width: 4rem;
+    max-width: 6rem;
+}
+
+/* Common Container Styles */
+
+.btn_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

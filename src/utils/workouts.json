@@ -1,0 +1,16 @@
+{   "settings": [
+        {"startTime": 0,"stopTime": 2},
+        {"startTime": 0,"stopTime": 3},
+        {"startTime": 10,"stopTime": 0},
+        {"startTime": 10,"totalRounds": 2},
+        {"startTime": 10,"restStartTime": 5,"totalRounds": 5}
+    ],
+
+    "workouts": [
+        { type: T_STOPWATCH, C: <Stopwatch  key={0} settings={WORKOUT_SETTINGS[0]} /> },
+        { type: T_STOPWATCH, C: <Stopwatch  key={1} settings={WORKOUT_SETTINGS[1]} /> },
+        { type: T_COUNTDOWN, C: <Countdown  key={2} settings={WORKOUT_SETTINGS[2]} /> },
+        { type: T_XY, C: <XY key={3} settings={WORKOUT_SETTINGS[3]}/> },
+        { type: T_TABATA, C: <Tabata key={4} settings={WORKOUT_SETTINGS[4]}/> }
+    ]
+}
