@@ -7,6 +7,7 @@ import Tabs from "../components/generic/Tabs/Tabs";
 import Card from "../components/generic/Card/Card";
 import Panel from "../components/generic/Panel/Panel";
 import { T_STOPWATCH, T_COUNTDOWN, T_XY, T_TABATA } from "../utils/helpers";
+import Dashboard from "../components/generic/Dashboard/Dashboard";
 
 
 const Title = styled.div`
@@ -255,6 +256,20 @@ const Documentation = () => {
             type: "string",
             defaultValue: "Optional. Default: None",
           },
+          {
+            prop: "Children Nodes",
+            description: "Accepts any React and HTML valid nodes",
+            type: "node",
+            defaultValue: "Optional. Default: None",
+          }
+        ]}
+      />
+
+
+      <DocumentComponent
+        title="Dashboard "
+        component={<Dashboard >Content goes here</Dashboard>}
+        propDocs={[
           {
             prop: "Children Nodes",
             description: "Accepts any React and HTML valid nodes",

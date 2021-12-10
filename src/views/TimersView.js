@@ -1,14 +1,15 @@
-import { useContext, useEffect, Fragment} from 'react';
+import { useContext, useEffect  } from 'react';
 import { TimerContext } from '../platform/TimerProvider';
 import Panel from "../components/generic/Panel/Panel";
 import Button from "../components/generic/Button/Button";
 import Dashboard from "../components/generic/Dashboard/Dashboard";
+import DashboardList from "../components/generic/DashboardList";
 import { useHistory } from 'react-router-dom';
 
 const TimersView = () => {
 
-	const { workouts, selectedTimer, setSelectedTimer, resetTimer, currentWorkout, hasNext, isEmpty, 
-		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout } = useContext(TimerContext);
+	const { workouts, selectedTimer, setSelectedTimer, currentWorkout, hasNext, isEmpty
+		, scrollToCurrentWorkout, resetTimer } = useContext(TimerContext);
 
 	const history = useHistory();
 
@@ -20,18 +21,9 @@ const TimersView = () => {
 	}, [currentWorkout, workouts, hasNext, setSelectedTimer, scrollToCurrentWorkout]); 
 
 
-	// Handle the deletion from the list
-	const handleDelete = (e) => {
-		resetTimer();
-		const id = parseInt(e.target.attributes.value.value);
-		if (id === currentWorkout) 
-			deleteCurrentWorkout()
-		else if (id || id === 0) 
-				deleteWorkout({"id": id});
-	}
-
 	// handle redirect
 	const handleRedirect = () => {
+		resetTimer();
 		history.push("/add");
 	}
 
@@ -40,31 +32,7 @@ const TimersView = () => {
 			{!isEmpty() && 
 				<div className="vertical_inline">
 				<Dashboard>
-					<h1>My Workout</h1>
-					<div>{workouts.length} set(s) for a total of <span id="total_duration">{calculateTotalWorkout()}</span> seconds </div>
-					<div className="scrollable">
-					{workouts.map((workout, index) => 
-							<Fragment key={index}>
-								<div id={`element${index}`}className="horizontal_inline">
-									<div tabIndex={index} className={isCurrentWorkout(index)? `${workout.type.toLowerCase()} selected` : ''} autoFocus={isCurrentWorkout(index)}>
-										<div className="list_item">
-											<div className="primary_text">{getWorkoutProperty(index, 'title')}</div>
-											<div className="secondary_text">{getWorkoutProperty(index, 'type')}</div>
-										</div>
-									</div>
-									<Button 
-										id = {`delete_btn_${index}`}
-										value={getWorkoutProperty(index, 'id')}
-										isIconButton = {true}
-										onClick={handleDelete}
-										iconName="trash-outline"
-										buttonTheme={selectedTimer}
-									/>
-								</div>
-							</Fragment>
-						)
-					}
-					</div>
+					<DashboardList />
 				</Dashboard>
 				{!isEmpty() && <div className="spacer-6"></div>}
 				</div>
