@@ -49,7 +49,8 @@ const Tabs = memo(({ tabItems }) => {
 
 
 Tabs.propTypes = {
-    tabItems: PropTypes.arrayOf(PropTypes.string).isRequired
+    tabItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+    selected: PropTypes.string
 }
 
 export default Tabs;

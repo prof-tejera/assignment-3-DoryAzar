@@ -32,7 +32,7 @@ const TimersView = () => {
 			{!isEmpty() && 
 				<div className="vertical_inline">
 				<Dashboard>
-					<DashboardList />
+					<DashboardList activeMode={true}/>
 				</Dashboard>
 				{!isEmpty() && <div className="spacer-6"></div>}
 				</div>
