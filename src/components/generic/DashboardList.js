@@ -3,18 +3,18 @@ import { TimerContext } from '../../platform/TimerProvider';
 import Button from './Button/Button';
 
 
-const DashboardList =  memo((props) => {
+const DashboardList =  memo(({ activeMode }) => {
 
     const { workouts, selectedTimer, setSelectedTimer, resetTimer, currentWorkout, hasNext, 
 		calculateTotalWorkout, getWorkoutProperty, deleteCurrentWorkout, deleteWorkout, isCurrentWorkout, scrollToCurrentWorkout } = useContext(TimerContext);
 
 
 	useEffect(() => {
-		if (hasNext()) {
+		if (hasNext() && activeMode) {
 			setSelectedTimer(workouts[currentWorkout].type);
 			scrollToCurrentWorkout();
 		}
-	}, [currentWorkout, workouts, hasNext, setSelectedTimer, scrollToCurrentWorkout]); 
+	}, [currentWorkout, workouts, hasNext, setSelectedTimer, scrollToCurrentWorkout, activeMode]); 
 
 
 	// Handle the deletion from the list
@@ -35,7 +35,7 @@ const DashboardList =  memo((props) => {
             {workouts.map((workout, index) => 
                     <Fragment key={index}>
                         <div id={`element${index}`}className="horizontal_inline">
-                            <div tabIndex={index} className={props.activeMode && isCurrentWorkout(index)? `${workout.type.toLowerCase()} selected` : ''} autoFocus={props.activeMode && isCurrentWorkout(index)}>
+                            <div tabIndex={index} className={activeMode && isCurrentWorkout(index)? `${workout.type.toLowerCase()} selected` : ''} autoFocus={activeMode && isCurrentWorkout(index)}>
                                 <div className="list_item">
                                     <div className="primary_text">{getWorkoutProperty(index, 'title')}</div>
                                     <div className="secondary_text">{getWorkoutProperty(index, 'type')}</div>
